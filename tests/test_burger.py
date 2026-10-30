@@ -1,3 +1,5 @@
+from data.data_test import BUN_NAME, BUN_PRICE, SAUCE_NAME, SAUCE_PRICE, FILLING_NAME, FILLING_PRICE
+
 class TestBurger:
     def test_set_buns(self, create_burger, mock_bun):
         create_burger.set_buns(mock_bun)
@@ -24,9 +26,9 @@ class TestBurger:
     def test_get_price(self, create_burger, mock_bun, mock_filling, mock_sauce):
         create_burger.set_buns(mock_bun) # 200 - за 2 булки
         create_burger.add_ingredient(mock_filling) # 200 + 450 = 650
-        create_burger.add_ingredient(mock_sauce) # 650 + 50 = 700
+        create_burger.add_ingredient(mock_sauce) # 650 + 40 = 690
         
-        assert create_burger.get_price() == 700.0
+        assert create_burger.get_price() == BUN_PRICE * 2 + SAUCE_PRICE + FILLING_PRICE
 
     def test_get_receipt(self, create_burger, mock_bun, mock_filling, mock_sauce):
         create_burger.set_buns(mock_bun)
@@ -34,11 +36,12 @@ class TestBurger:
         create_burger.add_ingredient(mock_filling)
         
         expected_receipt = (
-            "(==== black bun ====)\n"
-            "= sauce hot sauce =\n"
-            "= filling meat cutlet =\n"
-            "(==== black bun ====)\n\n"
-            "Price: 700.0"
+            f"(==== {BUN_NAME} ====)\n"
+            f"= sauce {SAUCE_NAME} =\n"
+            f"= filling {FILLING_NAME} =\n"
+            f"(==== {BUN_NAME} ====)\n\n"
+            f"Price: {BUN_PRICE * 2 + SAUCE_PRICE + FILLING_PRICE}"
         )
         
         assert create_burger.get_receipt() == expected_receipt
+    

@@ -1,8 +1,9 @@
 from praktikum.bun import Bun
+from data.data_test import BUN_NAME, BUN_PRICE
 
 class TestBun:
     def test_bun_get_name(self, create_bun):
-        assert create_bun.get_name() == "black bun"
+        assert create_bun.get_name() == BUN_NAME
 
     def test_bun_get_price(self, create_bun):
-        assert create_bun.get_price() == 100.0
+        assert create_bun.get_price() == BUN_PRICE
