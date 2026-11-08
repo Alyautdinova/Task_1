@@ -8,7 +8,7 @@ class TestIngredient:
         assert create_ingredient.get_price() == SAUCE_PRICE
 
     def test_ingredient_get_name(self, create_ingredient):
-            assert create_ingredient.get_name() == SAUCE_NAME
+        assert create_ingredient.get_name() == SAUCE_NAME
 
     @pytest.mark.parametrize("ingredient_type, name, price", [
         (INGREDIENT_TYPE_SAUCE, SAUCE_NAME, SAUCE_PRICE),
